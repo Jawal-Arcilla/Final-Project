@@ -1,58 +1,57 @@
-const canvas = document.getElementById('grid');
-const ctx = canvas.getContext('2d');
+const canvas = document.getElementById('grid')
+const ctx = canvas.getContext('2d')
 
 class SnakePart{
-  constructor(x, y) {
-      this.x = x;
-      this.y = y;
+  constructor (x, y) {
+    this.x = x
+    this.y = y
   }
 }
 
-//variables
-let speed = 7;
-let tileCount = 20;
-let tileSize = canvas.width / tileCount - 2;
-let headX = 10;
-let headY = 10;
+ //variables
+let speed = 7
+let tileCount = 20
+let tileSize = canvas.width / tileCount - 2
+let headX = 10
+let headY = 10
 
-const snakeParts = [];
-let tailLength = 2;
+const snakeParts = []
+let tailLength = 2
 
-let xVelocity = 0;
-let yVelocity = 0;
+let xVelocity = 0
+let yVelocity = 0
 
-let appleX = 5;
-let appleY = 5;
+let appleX = 5
+let appleY = 5
 
 let score = 0;
 
 //gameLoop
 function drawGame () {
-  changeSnakePosition();
-  let result = isGameOver();
+  changeSnakePosition()
+  let result = isGameOver()
   if(result) {
-    return;
+    return
   }
 
+  clearScreen()
 
-  clearScreen();
-
-  checkAppleCollision();
-  drawApple();
-  drawSnake();
+  checkAppleCollision()
+  drawApple()
+  drawSnake()
  
-  drawScore();
+  drawScore()
  
-  setTimeout(drawGame, 1000/speed);
+  setTimeout(drawGame, 1000/speed)
 
   if (score > 7) {
-    speed = 11;
+    speed = 11
   } 
   if (score > 14) {
-    speed = 13;
+    speed = 13
   }
   if (score > 19) {
-    speed = 15;
+    speed = 15
   }
 }
 
@@ -86,44 +85,44 @@ function isGameOver() {
   }
 
   if (gameOver) {
-    ctx.fillStyle = 'white';
-    ctx.font = ' 50px Calibri';
-    ctx.fillText('Game Over!', canvas.width / 6.5, canvas.height / 2);
+    ctx.fillStyle = 'white'
+    ctx.font = ' 50px Calibri'
+    ctx.fillText('Game Over!', canvas.width / 6.5, canvas.height / 2)
   }
-  return gameOver;
+  return gameOver
 }
 
 function drawScore() {
   ctx.fillStyle = 'white';
   ctx.font = '12 px Calibri'
-  ctx.fillText('Score' + score, canvas.width - 50, 10);
+  ctx.fillText('Score' + score, canvas.width - 50, 10)
 }
 
 function clearScreen() {
-  ctx.fillStyle = "black";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = 'black';
+  ctx.fillRect(0, 0, canvas.width, canvas.height)
 }
 
 function drawSnake() {
-    ctx.fillStyle = "green";
-    for (let i = 0; i < snakeParts.length; i++) {
-    let part = snakeParts[i];
-    ctx.fillRect(part.x * tileCount, part.y * tileCount, tileSize, tileSize);
+  ctx.fillStyle = 'green';
+  for (let i = 0; i < snakeParts.length; i++) {
+  let part = snakeParts[i]
+  ctx.fillRect(part.x * tileCount, part.y * tileCount, tileSize, tileSize);
   }
 
 
   snakeParts.push(new SnakePart(headX, headY));
   while (snakeParts.length > tailLength) {
-  snakeParts.shift();
+  snakeParts.shift()
   }
 
     ctx.fillStyle = "orange";
-    ctx.fillRect(headX * tileCount, headY * tileCount, tileSize, tileSize);
+    ctx.fillRect(headX * tileCount, headY * tileCount, tileSize, tileSize)
 }
 
 function changeSnakePosition () {
-  headX = headX + xVelocity;
-  headY = headY + yVelocity;
+  headX = headX + xVelocity
+  headY = headY + yVelocity
 
 }
 
