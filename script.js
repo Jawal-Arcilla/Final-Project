@@ -168,7 +168,11 @@ function keyDown (event) {
     return
     yVelocity = 0
     xVelocity = 1
+    }
+  }
+  }
+  }
   }
 }
-
+a
 drawGame()
