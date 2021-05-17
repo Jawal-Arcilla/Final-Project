@@ -103,8 +103,8 @@ function clearScreen () {
 function drawSnake () {
   ctx.fillStyle = 'green'
   for (let i = 0; i < snakeParts.length; i++) {
-  let part = snakeParts[i]
-  ctx.fillRect(part.x * tileCount, part.y * tileCount, tileSize, tileSize)
+    let part = snakeParts[i]
+    ctx.fillRect(part.x * tileCount, part.y * tileCount, tileSize, tileSize)
   }
   
   snakeParts.push(new SnakePart(headX, headY))
@@ -112,14 +112,13 @@ function drawSnake () {
   snakeParts.shift()
   }
 
-    ctx.fillStyle = "orange"
-    ctx.fillRect(headX * tileCount, headY * tileCount, tileSize, tileSize)
+  ctx.fillStyle = 'orange'
+  ctx.fillRect(headX * tileCount, headY * tileCount, tileSize, tileSize)
 }
 
 function changeSnakePosition () {
   headX = headX + xVelocity
   headY = headY + yVelocity
-
 }
 
 function drawApple () {
@@ -128,7 +127,7 @@ function drawApple () {
 }
 
 function checkAppleCollision () {
-  if(appleX === headX & appleY === headY) {
+  if (appleX === headX & appleY === headY) {
     appleX = Math.floor(Math.random() * tileCount)
     appleY = Math.floor(Math.random() * tileCount)
     tailLength++
@@ -140,32 +139,32 @@ document.body.addEventListener('keydown', keyDown)
 
 function keyDown(event) {
   //up arrow
-  if(event.keyCode == 38) {
-    if(yVelocity == 1)
+  if (event.keyCode == 38) {
+    if (yVelocity == 1)
       return
     yVelocity = -1
     xVelocity = 0
   }
 
   //down arrow
-  if(event.keyCode == 40) {
-    if(yVelocity == -1)
+  if (event.keyCode == 40) {
+    if (yVelocity == -1)
     return
     yVelocity = 1
     xVelocity = 0
   }
 
   //left arrow
-  if(event.keyCode == 37) {
-    if(xVelocity == 1)
+  if (event.keyCode == 37) {
+    if (xVelocity == 1)
     return
     yVelocity = 0
     xVelocity = -1
   }
 
   //right arrow
-  if(event.keyCode == 39) {
-    if(xVelocity == -1)
+  if (event.keyCode == 39) {
+    if (xVelocity == -1)
     return
     yVelocity = 0
     xVelocity = 1
