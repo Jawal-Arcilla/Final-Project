@@ -10,8 +10,8 @@ class SnakePart {
 
 //  variables
 let speed = 7
-let tileCount = 20
-let tileSize = canvas.width / tileCount - 2
+const tileCount = 20
+const tileSize = canvas.width / tileCount - 2
 let headX = 10
 let headY = 10
 
@@ -29,7 +29,7 @@ let score = 0
 //  gameLoop
 function drawGame () {
   changeSnakePosition()
-  let result = isGameOver()
+  const result = isGameOver()
   if (result) {
     return
   }
@@ -74,7 +74,7 @@ function isGameOver () {
   }
 
   for (let i = 0; i < snakeParts.length; i++) {
-    let part = snakeParts[i]
+    const part = snakeParts[i]
     if (part.x === headX && part.y === headY) {
       gameOver = true
       break
@@ -103,7 +103,7 @@ function clearScreen () {
 function drawSnake () {
   ctx.fillStyle = 'green'
   for (let i = 0; i < snakeParts.length; i++) {
-      let part = snakeParts[i]
+      const part = snakeParts[i]
       ctx.fillRect(part.x * tileCount, part.y * tileCount, tileSize, tileSize)
   }
 
@@ -166,8 +166,8 @@ function keyDown(event) {
   if (event.keyCode === 39) {
     if (xVelocity === -1)
     return
-      yVelocity = 0
-      xVelocity = 1
+    yVelocity = 0
+    xVelocity = 1
   }
 }
 
