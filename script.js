@@ -103,8 +103,8 @@ function clearScreen () {
 function drawSnake () {
   ctx.fillStyle = 'green'
   for (let i = 0; i < snakeParts.length; i++) {
-        const part = snakeParts[i]
-        ctx.fillRect(part.x * tileCount, part.y * tileCount, tileSize, tileSize)
+    const part = snakeParts[i]
+    ctx.fillRect(part.x * tileCount, part.y * tileCount, tileSize, tileSize)
   }
 
   snakeParts.push(new SnakePart(headX, headY))
@@ -138,7 +138,7 @@ function checkAppleCollision () {
 document.body.addEventListener('keydown', keyDown)
 
 function keyDown (event) {
-//  up arrow
+  //up arrow
   if (event.keyCode === 38) {
     if (yVelocity === 1)
       return
@@ -146,7 +146,7 @@ function keyDown (event) {
     xVelocity = 0
   }
 
-//  down arrow
+  //down arrow
   if (event.keyCode === 40) {
     if (yVelocity === -1)
       return
@@ -154,7 +154,7 @@ function keyDown (event) {
     xVelocity = 0
   }
 
-//  left arrow
+  //left arrow
   if (event.keyCode === 37) {
     if (xVelocity === 1)
       return
@@ -162,7 +162,7 @@ function keyDown (event) {
     xVelocity = -1
   }
 
-//  right arrow
+  //right arrow
   if (event.keyCode === 39) {
     if (xVelocity === -1)
       return
