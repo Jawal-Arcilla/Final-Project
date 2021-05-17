@@ -165,7 +165,7 @@ function keyDown(event) {
 //  right arrow
   if (event.keyCode === 39) {
     if (xVelocity === -1)
-    return=
+    return
       yVelocity = 0
       xVelocity = 1
   }
