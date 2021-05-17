@@ -1,14 +1,14 @@
 const canvas = document.getElementById('grid')
 const ctx = canvas.getContext('2d')
 
-class SnakePart{
+class SnakePart {
   constructor (x, y) {
     this.x = x
     this.y = y
   }
 }
 
-  //variables
+//  variables
 let speed = 7
 let tileCount = 20
 let tileSize = canvas.width / tileCount - 2
@@ -26,7 +26,7 @@ let appleY = 5
 
 let score = 0
 
-//gameLoop
+//  gameLoop
 function drawGame () {
   changeSnakePosition()
   let result = isGameOver()
@@ -39,14 +39,14 @@ function drawGame () {
   checkAppleCollision()
   drawApple()
   drawSnake()
- 
+
   drawScore()
- 
-  setTimeout(drawGame, 1000/speed)
+
+  setTimeout(drawGame, 1000 / speed)
 
   if (score > 7) {
     speed = 11
-  } 
+  }
   if (score > 14) {
     speed = 13
   }
@@ -58,21 +58,18 @@ function drawGame () {
 function isGameOver() {
   let gameOver = false
 
-  if(yVelocity === 0 && xVelocity === 0) {
+  if (yVelocity === 0 && xVelocity === 0) {
     return false
   }
 
-  //walls
+  //  walls
   if (headX < 0) {
     gameOver = true
-  }
-  else if (headX === tileCount) {
+  } else if (headX === tileCount) {
     gameOver = true
-  }
-  else if (headY < 0) {
+  } else if (headY < 0) {
     gameOver = true
-  }
-  else if (headY === tileCount) {
+  } else if (headY === tileCount) {
     gameOver = true
   }
 
@@ -109,8 +106,7 @@ function drawSnake() {
   let part = snakeParts[i]
   ctx.fillRect(part.x * tileCount, part.y * tileCount, tileSize, tileSize)
   }
-
-
+  
   snakeParts.push(new SnakePart(headX, headY))
   while (snakeParts.length > tailLength) {
   snakeParts.shift()
@@ -139,7 +135,6 @@ function checkAppleCollision() {
     score++
   }
 }
-
 
 document.body.addEventListener('keydown', keyDown)
 
@@ -176,6 +171,5 @@ function keyDown(event) {
     xVelocity = 1
   }
 }
-
 
 drawGame()
